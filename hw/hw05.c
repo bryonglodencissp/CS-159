@@ -68,7 +68,8 @@ void validate(int* dataSize, int* lowest, int* highest, int* digit)
   
   printf("\n");
 
-  for(i = 0; i < 5; i++) {
+  for(i = 0; i < 5; i++) 
+  {
     switch(i)
     {
       case 0:
