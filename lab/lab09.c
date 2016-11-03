@@ -158,7 +158,7 @@ int count(int option, int value)
     value /= 10;
   }
 
-  return((option == 3 && trio == 1 && duo == 2) || (option == 2 && trio == 0 && duo == 1) || (option == 1 && trio == 0 && duo == 0));
+  return((option - duo) == 1 && (option == 3 ? trio == 1 : !trio));
 }
 
 /***************************************************************************
