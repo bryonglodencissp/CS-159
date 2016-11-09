@@ -4,7 +4,7 @@
 %  Programmers and Purdue Email Addresses:
 %  1. Atif Niyaz aniyaz@purdue.edu
 %  2. Canyu Yang yang1083@purdue.edu
-%  3. Ittichot Suwnamungkool iswuanmu@purdue.edu 
+%  3. Ittichot Suwanmungkool isuwanmu@purdue.edu 
 %
 %  Lab #: 10
 %
