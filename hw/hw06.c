@@ -25,8 +25,8 @@
 
 #define NUM_INTS 15
 
-void getInput(int*);
-void analyze(int*);
+void getInput(int[]);
+void analyze(int[]);
 void analyzeInteger(int);
 
 int main()
@@ -50,14 +50,14 @@ int main()
 *     Function Return Type: void
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1. int* dataSet; // The dataSet array to populate
+*       1. int dataSet []; // The dataSet array to populate
 *
 *     Function Description: Takes in NUM_INTS integers into an array from
 *                           input.
 *
 ***************************************************************************/
 
-void getInput(int* dataSet)
+void getInput(int dataSet [])
 {
   int i; // For-loop Iterator
   
@@ -80,14 +80,14 @@ void getInput(int* dataSet)
 *     Function Return Type: void
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1. int* dataSet; // The data set array to analyze
+*       1. int dataSet []; // The data set array to analyze
 *
 *     Function Description: Takes in NUM_INTS integers and analyzes each
 *                           one for primes.
 *
 ***************************************************************************/
 
-void analyze(int* dataSet)
+void analyze(int dataSet [])
 {
   int i; // For-loop iterator
 
