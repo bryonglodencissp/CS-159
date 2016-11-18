@@ -138,7 +138,7 @@ void analyzeInteger(int value)
     }
     else
     {
-      for(i = 2; i < number; i++)
+      for(i = 2; i < number / 2 + 1; i++)
       {
         if(number % i == 0)
         {
@@ -146,7 +146,7 @@ void analyzeInteger(int value)
         }
       }
 
-      if(number == i)
+      if(number / 2 + 1 == i)
       {
         primeCount++;
         printf("%02d ", number);
