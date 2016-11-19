@@ -1,11 +1,11 @@
 /***************************************************************************
 *
 *  Programmers and Purdue Email Addresses:
-*	 1. login1@purdue.edu
-*	 2. login2@purdue.edu
-*	 3. login3@purdue.edu (delete line if no third partner)
+*       1. Atif Niyaz aniyaz@purdue.edu
+*       2. Ittichot Suwanmungkool isuwanmu@purdue.edu
+*       3. Canyu Yang yang1083@purdue.edu
 *
-*  Lab #:
+*  Lab #: 11
 *
 *  Academic Integrity Statement:
 *
@@ -15,9 +15,10 @@
 *       to our code to another. The project we are submitting
 *       is our own original work.
 *
-*  Lab Division and Section:
+*  Lab Division and Section: Wednesday, 11:30 A.M. - 1:20 P.M., SC 189
 *
-*  Program Description:
+*  Program Description: This program decrypts a list of numbers based on a 
+*                       key that is validated from standard input
 *
 ***************************************************************************/
 
