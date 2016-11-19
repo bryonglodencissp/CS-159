@@ -1,35 +1,12 @@
-/***************************************************************************
-*
-*  Programmer and Purdue Email Address:
-*  1. Atif Niyaz aniyaz@purdue.edu
-*
-*  Homework #: 06
-*
-*  Academic Integrity Statement:
-*
-*       I have not used source code obtained from
-*       any other unauthorized source, either modified
-*       or unmodified.  Neither have I provided access
-*       to my code to another. The project I am submitting
-*       is my own original work.
-*
-*  Lab Division and Section: Wednesday, 11:30 A.M - 1:20 P.M., SC 189
-*
-*  Program Description: This program calculates how many different prime numbers
-*                       can be made up based on adjacent pairs in a specified 
-*                       number
-*
-***************************************************************************/
-
 #include <stdio.h>
+#include <math.h>
 
 #define NUM_INTS 20
 
-int power(int, int);
 void getKey(int*);
 void getData(int[]);
-void secure(int[], int);
-void encrypt(int, int);
+void insecure(int[], int);
+void decrypt(int, int);
 
 int main()
 {
@@ -38,14 +15,32 @@ int main()
   
   getKey(&key);
   getData(data);
-  secure(data, key);
+  insecure(data, key);
 
   return(0);
 }
 
+
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function: getKey
+*
+*     Programmer's Name: Atif Niyaz, Ittichot Suwanmungkool, Canyu Yang
+*
+*     Function Return Type: void
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1. int key; // Specific Key to get
+*
+*     Function Description: Takes in a <int*> and validates the input to
+*                           determine the key.
+*
+***************************************************************************/
+
 void getKey(int* key)
 {
-  
   do
   {
     printf("\nEnter key value: ");
@@ -62,21 +57,21 @@ void getKey(int* key)
 *
 *     Function Information
 *
-*     Name of Function: getInput
+*     Name of Function: getData
 *
-*     Programmer's Name: Atif Niyaz
+*     Programmer's Name: Atif Niyaz, Ittichot Suwanmungkool, Canyu Yang
 *
 *     Function Return Type: void
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1. int dataSet []; // The dataSet array to populate
+*       1. int data []; // The data array to populate
 *
 *     Function Description: Takes in NUM_INTS integers into an array from
-*                           input.
+*                           standard IO.
 *
 ***************************************************************************/
 
-void getData(int dataSet [])
+void getData(int data [])
 {
   int i; // For-loop Iterator
   
@@ -84,7 +79,7 @@ void getData(int dataSet [])
   
   for(i = 0; i < NUM_INTS; i++)
   {
-    scanf("%d", &dataSet[i]);
+    scanf("%d", &data[i]);
   }
 }
 
@@ -92,21 +87,21 @@ void getData(int dataSet [])
 *
 *     Function Information
 *
-*     Name of Function: analyze
+*     Name of Function: insecure
 *
-*     Programmer's Name: Atif Niyaz
+*     Programmer's Name: Atif Niyaz, Ittichot Suwanmungkool, Canyu Yang
 *
 *     Function Return Type: void
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1. int dataSet []; // The data set array to analyze
+*       1. int data []; // The data to analyze
+*       2. int key; // The key to use to decrypt
 *
-*     Function Description: Takes in NUM_INTS integers and analyzes each
-*                           one for primes.
+*     Function Description: Takes in NUM_INTS ints and decrypts them.
 *
 ***************************************************************************/
 
-void secure(int dataSet [], int key)
+void insecure(int data [], int key)
 {
   int i; // For-loop iterator
 
@@ -114,7 +109,7 @@ void secure(int dataSet [], int key)
 
   for(i = 0; i < NUM_INTS; i++)
   {
-    encrypt(dataSet[i], key);
+    decrypt(data[i], key);
   }
 
   printf("\n");
@@ -124,21 +119,21 @@ void secure(int dataSet [], int key)
 *
 *     Function Information
 *
-*     Name of Function: analyzeInteger
+*     Name of Function: decrypt
 *
-*     Programmer's Name: Atif Niyaz
+*     Programmer's Name: Atif Niyaz, Ittichot Suwanmungkool, Canyu Yang
 *
 *     Function Return Type: void
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1. int value; // Specific Number to Analyze
+*       1. int number; // Number to decrypt
+*       2. int key;    // Key to use to decrypt
 *
-*     Function Description: Takes in a <int> value and analyzes it checking
-*                           for primes in each pair. 
+*     Function Description: Decrypts an individual number based on a key 
 *
 ***************************************************************************/
 
-void encrypt(int value, int key)
+void decrypt(int value, int key)
 {
 
   int valueCopy = value; // Copy of the value
@@ -147,22 +142,12 @@ void encrypt(int value, int key)
   
   while(value != 0)
   {
-    encrypted += ((value % 10 - key + 10) % 10) * power(10, powVal);
+    encrypted += ((value % 10 - key + 10) % 10) * (int) (pow(10, powVal));
     powVal++;
     value /= 10;
   }
 
-  printf("%10d%0*11d\n", valueCopy, encrypted);
+  
+  printf("%10d%*c%0*d\n", valueCopy, 11 - (powVal + 1), 0, powVal + 1, encrypted);
 }
 
-int power(int value, int pow) {
-
-  int newValue = 1; // New value;
-  int i; // For-loop iterator
-
-  for(i = 0; i < pow; i++) {
-    newValue *= value;
-  }
-
-  return newValue;
-}
