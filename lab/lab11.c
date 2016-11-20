@@ -44,7 +44,6 @@ int main()
   return(0);
 }
 
-
 /***************************************************************************
 *
 *     Function Information
@@ -157,20 +156,21 @@ void insecure(int data [], int key)
 *
 ***************************************************************************/
 
-void decrypt(int value, int key)
+void decrypt(int number, int key)
 {
 
-  int valueCopy = value; // Copy of the value
   int powVal = 0; // Power determinator
   int encrypted = 0; // Encrypted number
   
-  while(value != 0)
+  printf("%10d", number);
+
+  while(number != 0)
   {
-    encrypted += ((value % 10 - key + 10) % 10) * (int) (pow(10, powVal));
+    encrypted += ((number % 10 - key + 10) % 10) * (int) (pow(10, powVal));
     powVal++;
-    value /= 10;
+    number /= 10;
   }
   
-  printf("%10d%*c%0*d\n", valueCopy, 12 - powVal, 0, powVal, encrypted);
+  printf("%*c%0*d\n", 12 - powVal, 0, powVal, encrypted);
 }
 
