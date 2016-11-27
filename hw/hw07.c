@@ -1,3 +1,26 @@
+
+/***************************************************************************
+*
+*  Programmer and Purdue Email Address:
+*  1. Atif Niyaz aniyaz@purdue.edu
+*
+*  Homework #: 07
+*
+*  Academic Integrity Statement:
+*
+*       I have not used source code obtained from
+*       any other unauthorized source, either modified
+*       or unmodified.  Neither have I provided access
+*       to my code to another. The project I am submitting
+*       is my own original work.
+*
+*  Lab Division and Section: Wednesday, 11:30 A.M. - 1:20 P.M., SC 189
+*
+*  Program Description: This program determines how many points that a car
+*                       with a certain mileage cannot go to consecutively.
+*
+***************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -27,6 +50,20 @@ int main()
   return(0);
 }
 
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function: getFuelRange()
+*
+*     Programmer's Name: Atif Niyaz
+*
+*     Function Return Type: int
+*
+*     Function Description: Gets and validates the fuel range from STDIN
+*
+***************************************************************************/
+
 int getFuelRange() 
 {
 
@@ -49,6 +86,21 @@ int getFuelRange()
   return(fuelRange);
 }
 
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function: getStartingMileMarker
+*
+*     Programmer's Name: Atif Niyaz
+*
+*     Function Return Type: int
+*
+*     Function Description: Gets and validates the value of the starting 
+*                           milemarker from STDIN
+*
+***************************************************************************/
+
 int getStartingMileMarker() 
 {
 
@@ -69,6 +121,24 @@ int getStartingMileMarker()
   return(mileMarker);
 }
 
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function: getMileMarkerPositions
+*
+*     Programmer's Name: Atif Niyaz
+*
+*     Function Return Type: int
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1. int mileMarkers []; // The array of mile markers
+*
+*     Function Description: Gets the data of the mile markers from STDIN
+*                           Returns the length of the array
+*
+***************************************************************************/
+
 int getMileMarkerPositions(int mileMarkers []) 
 {
 
@@ -84,6 +154,24 @@ int getMileMarkerPositions(int mileMarkers [])
 
   return(len - 1);
 }
+
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function: insertionSort
+*
+*     Programmer's Name: Atif Niyaz
+*
+*     Function Return Type: void
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1. int array []; // The array to sort
+*       2. int length; // The actual length of the array
+*
+*     Function Description: Insertion sorts the array so it is sorted
+*
+***************************************************************************/
 
 void insertionSort(int array [], int length) 
 {
@@ -112,13 +200,32 @@ void insertionSort(int array [], int length)
   }
 }
 
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function: binarySearch
+*
+*     Programmer's Name: Atif Niyaz
+*
+*     Function Return Type: int
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1. int array []; // The array to search through (must be sorted)
+*       2. int length; // The actual length of the array
+*       3. int number; // Desired number to look for
+*
+*     Function Description: Does a binary search to find the desired number
+*
+***************************************************************************/
+
 int binarySearch(int array [], int length, int number) 
 {
   
-  int left = 0;
-  int right = length - 1;
+  int left = 0; // Left bounds of array to search
+  int right = length - 1; // Rights bound of array to search
   
-  int index = 0;
+  int index = 0; // Actual index of number
 
   while(array[index] != number) 
   {
@@ -138,6 +245,28 @@ int binarySearch(int array [], int length, int number)
 
   return(index);
 }
+
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function: findAllPoints
+*
+*     Programmer's Name: Atif Niyaz
+*
+*     Function Return Type: void
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1. int array[]; // The array of milemarkers
+*       2. int length; // The length of the array of milemarkers
+*       3. int startingIndex; // The index of starting milemarker
+*       4. int mileage; // The mileage of the vehicle
+*
+*     Function Description: Find all points that can be reached. Then take
+*                           the length and subtract by points to find 
+*                           points that were not reached.
+*
+***************************************************************************/
 
 void findAllPoints(int array[], int length, int startingIndex, int mileage)
 {
