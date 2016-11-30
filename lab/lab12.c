@@ -5,8 +5,10 @@
 int getExiting(int []);
 int getReturning(int []);
 
-void findExitNoReturn(int [], int [], int, int);
-void findReturnNoExit(int [], int [], int, int);
+void checkAttendance(int [], int [], int, int);
+int find(int [], int [], int, int, int []);
+
+void printList(int [], int);
 
 int main()
 {
@@ -17,9 +19,8 @@ int main()
   int exitingLength = getExiting(exiting);
   int returningLength = getReturning(returning);
 
-  findExitNoReturn(exiting, returning, exitingLength, returningLength);
-  findReturnNoExit(exiting, returning, exitingLength, returningLength);
-  
+  checkAttendance(exiting, returning, exitingLength, returningLength);
+
   return(0);
 }
 
@@ -34,7 +35,7 @@ int getExiting(int array [])
     scanf("%d", &array[i]);
   } while(array[i] != -1 && (i + 1) < MAX_CLASS);
 
-  return(i + 1);
+  return(i);
 }
 
 int getReturning(int array [])
@@ -48,15 +49,75 @@ int getReturning(int array [])
     scanf("%d", &array[i]);
   } while(array[i] != -1 && (i + 1) < MAX_CLASS);
 
-  return(i + 1);
+  return(i);
 }
 
-void findExitNoReturn(int exiting [], int returning [], int exitLen, int returnLen)
+void checkAttendance(int exiting [], int returning [], int exitLen, int returnLen)
 {
 
+  int valuesExit [MAX_CLASS + 1] = {};
+  int valuesReturn [MAX_CLASS + 1] = {};
+  int countExit = find(exiting, returning, exitLen, returnLen, valuesExit);
+  int countReturn = find(returning, exiting, returnLen, exitLen, valuesReturn);
+
+  if(countExit == 0 && countReturn == 0)
+  {
+    printf("\nAll exiting students returned.\n\n");
+  }
+  else
+  {
+    if(countExit != 0)
+    {
+      printf("Students returning but not exiting:");
+      printList(valuesExit, countExit);
+      printf("\n\n");
+    }
+
+    if(countReturn != 0)
+    {
+      printf("Students exiting but not returning:");
+      printList(valuesReturn, countReturn);
+      printf("\n\n");
+    }
+
+    
+  }
 }
 
-void findReturnNoExit(int exiting [], int returning [], int exitLen, int returnLen)
+int find(int exiting [], int returning [], int exitLen, int returnLen, int values [])
 {
 
+  int i;
+  int j;
+  int cnt = 0;
+  
+  for(i = 0; i < exitLen; i++)
+  {
+    for(j = 0; j < returnLen; j++)
+    {
+      if(exiting[i] == returning[j])
+      {
+	j = 99;
+      }
+    }
+
+    if(j != 100)
+    {
+      values[cnt] = exiting[i];
+      cnt++;
+    }
+  }
+
+  values[cnt] = -1;
+  return(cnt);
+}
+
+void printList(int array [], int len)
+{
+  int i;
+
+  for(i = 0; i < len; i++)
+  {
+    printf(" %d", array[i]);
+  }
 }
