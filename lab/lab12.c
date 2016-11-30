@@ -1,3 +1,28 @@
+
+/***************************************************************************
+*
+*  Programmers and Purdue Email Addresses:
+*	 1. login1@purdue.edu
+*	 2. login2@purdue.edu
+*	 3. login3@purdue.edu (delete line if no third partner)
+*
+*  Lab #:
+*
+*  Academic Integrity Statement:
+*
+*       We have not used source code obtained from
+*       any other unauthorized source, either modified
+*       or unmodified.  Neither have we provided access 
+*       to our code to another. The project we are submitting
+*       is our own original work.
+*
+*  Lab Division and Section:
+*
+*  Program Description:
+*
+***************************************************************************/
+
+
 #include <stdio.h>
 
 #define MAX_CLASS 30
@@ -24,6 +49,25 @@ int main()
 
   return(0);
 }
+
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function:
+*
+*     Programmer's Name:
+*
+*     Function Return Type:
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1.
+*       2.
+*       3.
+*
+*     Function Description:
+*
+***************************************************************************/
 
 int getExiting(int array [])
 {
@@ -52,6 +96,25 @@ int getReturning(int array [])
 
   return(i);
 }
+
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function:
+*
+*     Programmer's Name:
+*
+*     Function Return Type:
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1.
+*       2.
+*       3.
+*
+*     Function Description:
+*
+***************************************************************************/
 
 void checkAttendance(int exiting [], int returning [], int exitLen, int returnLen)
 {
@@ -90,6 +153,25 @@ void checkAttendance(int exiting [], int returning [], int exitLen, int returnLe
   }
 }
 
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function:
+*
+*     Programmer's Name:
+*
+*     Function Return Type:
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1.
+*       2.
+*       3.
+*
+*     Function Description:
+*
+***************************************************************************/
+
 int find(int exiting [], int returning [], int exitLen, int returnLen, int values [])
 {
 
@@ -118,6 +200,25 @@ int find(int exiting [], int returning [], int exitLen, int returnLen, int value
   return(cnt);
 }
 
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function:
+*
+*     Programmer's Name:
+*
+*     Function Return Type:
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1.
+*       2.
+*       3.
+*
+*     Function Description:
+*
+***************************************************************************/
+
 void printList(int array [], int len)
 {
   int i; // For-loop iterator
@@ -128,6 +229,25 @@ void printList(int array [], int len)
     printf(" %d", array[i]);
   }
 }
+
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function:
+*
+*     Programmer's Name:
+*
+*     Function Return Type:
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1.
+*       2.
+*       3.
+*
+*     Function Description:
+*
+***************************************************************************/
 
 void insertionSort(int array [], int len) 
 {
