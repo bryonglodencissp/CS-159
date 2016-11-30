@@ -9,6 +9,7 @@ void checkAttendance(int [], int [], int, int);
 int find(int [], int [], int, int, int []);
 
 void printList(int [], int);
+void insertionSort(int [], int);
 
 int main()
 {
@@ -68,13 +69,18 @@ void checkAttendance(int exiting [], int returning [], int exitLen, int returnLe
   {
     if(countExit != 0)
     {
-      printf("Students returning but not exiting:");
+      printf("\nStudents returning but not exiting:");
       printList(valuesExit, countExit);
       printf("\n\n");
     }
 
     if(countReturn != 0)
     {
+      if(countExit == 0) 
+      {
+	printf("\n");
+      }
+
       printf("Students exiting but not returning:");
       printList(valuesReturn, countReturn);
       printf("\n\n");
@@ -114,10 +120,38 @@ int find(int exiting [], int returning [], int exitLen, int returnLen, int value
 
 void printList(int array [], int len)
 {
-  int i;
+  int i; // For-loop iterator
+  insertionSort(array, len);
 
   for(i = 0; i < len; i++)
   {
     printf(" %d", array[i]);
   }
 }
+
+void insertionSort(int array [], int len) 
+{
+
+  int min; // Index of minimum value
+  int temp; // Temp value used for value swap
+
+  int i; // For-loop iterator
+  int j; // For-loop iterator
+
+  for(i = 0; i < len - 1; i++)
+  {
+    min = i;
+    for(j = i; j < len; j++)
+    {
+      if(array[min] > array[j])
+      {
+	min = j;
+      }	
+    }
+
+    temp = array[i];
+    array[i] = array[min];
+    array[min] = temp;
+  }
+}
+
