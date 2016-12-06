@@ -2,11 +2,11 @@
 /***************************************************************************
 *
 *  Programmers and Purdue Email Addresses:
-*	 1. login1@purdue.edu
-*	 2. login2@purdue.edu
-*	 3. login3@purdue.edu (delete line if no third partner)
+*	 1. Atif Niyaz aniyaz@purdue.edu
+*	 2. Canyu Yang yang1083@purdue.edu
+*	 3. Ittichot Suwanmungkool isuwanmu@purdue.edu
 *
-*  Lab #:
+*  Lab #: 12
 *
 *  Academic Integrity Statement:
 *
@@ -16,12 +16,13 @@
 *       to our code to another. The project we are submitting
 *       is our own original work.
 *
-*  Lab Division and Section:
+*  Lab Division and Section: Wednesday, 11:30 A.M. - 1:20 P.M., SC 189
 *
-*  Program Description:
+*  Program Description: This program keeps track of students that are
+*                       exiting and returning. Students are tracked based
+*                       on their ID number which is stored in the program.
 *
 ***************************************************************************/
-
 
 #include <stdio.h>
 
@@ -39,11 +40,11 @@ void insertionSort(int [], int);
 int main()
 {
 
-  int exiting [MAX_CLASS] = {0};
-  int returning [MAX_CLASS] = {0};
+  int exiting [MAX_CLASS] = {0}; // The array of exiting students
+  int returning [MAX_CLASS] = {0}; // The array of returning students
 
-  int exitingLength = getExiting(exiting);
-  int returningLength = getReturning(returning);
+  int exitingLength = getExiting(exiting); // The length of the array of exiting students
+  int returningLength = getReturning(returning); // The length of the array of returning students
 
   checkAttendance(exiting, returning, exitingLength, returningLength);
 
@@ -54,18 +55,16 @@ int main()
 *
 *     Function Information
 *
-*     Name of Function:
+*     Name of Function: getExiting
 *
-*     Programmer's Name:
+*     Programmer's Name: Atif Niyaz, Canyu Yang, Ittichot Suwanmungkool
 *
-*     Function Return Type:
+*     Function Return Type: int
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1.
-*       2.
-*       3.
+*       1. int array []; // The array to populate
 *
-*     Function Description:
+*     Function Description: Populates the array with exiting students
 *
 ***************************************************************************/
 
@@ -80,8 +79,30 @@ int getExiting(int array [])
     scanf("%d", &array[i]);
   } while(array[i] != -1 && (i + 1) < MAX_CLASS);
 
+  if(!((i + 1) < MAX_CLASS))
+  {
+    i++;
+  }
+  
   return(i);
 }
+
+/***************************************************************************
+*
+*     Function Information
+*
+*     Name of Function: getReturning
+*
+*     Programmer's Name: Atif Niyaz, Canyu Yang, Ittichot Suwanmungkool
+*
+*     Function Return Type: int
+*
+*     Parameters (list data type, name, and comment one per line):
+*       1. int array []; // The array to populate
+*
+*     Function Description: Populates the array with returning students
+*
+***************************************************************************/
 
 int getReturning(int array [])
 {
@@ -94,35 +115,43 @@ int getReturning(int array [])
     scanf("%d", &array[i]);
   } while(array[i] != -1 && (i + 1) < MAX_CLASS);
 
+  if(!((i + 1) < MAX_CLASS) && array[MAX_CLASS - 1] != -1)
+  {
+    i++;
+  }
+  
   return(i);
 }
+
 
 /***************************************************************************
 *
 *     Function Information
 *
-*     Name of Function:
+*     Name of Function: checkAttendance
 *
-*     Programmer's Name:
+*     Programmer's Name: Atif Niyaz, Canyu Yang, Ittichot Suwanmungkool
 *
-*     Function Return Type:
+*     Function Return Type: void
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1.
-*       2.
-*       3.
+*       1. int exiting []; // The array of exiting students
+*       2. int returning []; // The array of returning students
+*       3. int exitLen; // The length of the exiting students array
+*       4. int returnLen; // The length of the returning students array
 *
-*     Function Description:
+*     Function Description: Check attendance of the students and report 
+*                           the status.
 *
 ***************************************************************************/
 
 void checkAttendance(int exiting [], int returning [], int exitLen, int returnLen)
 {
 
-  int valuesExit [MAX_CLASS + 1] = {};
-  int valuesReturn [MAX_CLASS + 1] = {};
-  int countExit = find(exiting, returning, exitLen, returnLen, valuesExit);
-  int countReturn = find(returning, exiting, returnLen, exitLen, valuesReturn);
+  int valuesExit [MAX_CLASS + 1] = {0}; // Array of those who exited but did not return
+  int valuesReturn [MAX_CLASS + 1] = {0}; // Array of those who returned but did not exit
+  int countExit = find(exiting, returning, exitLen, returnLen, valuesExit); // Length of exited but did not return
+  int countReturn = find(returning, exiting, returnLen, exitLen, valuesReturn); // Lenght of returned but did not exit
 
   if(countExit == 0 && countReturn == 0)
   {
@@ -148,8 +177,6 @@ void checkAttendance(int exiting [], int returning [], int exitLen, int returnLe
       printList(valuesReturn, countReturn);
       printf("\n\n");
     }
-
-    
   }
 }
 
@@ -157,27 +184,29 @@ void checkAttendance(int exiting [], int returning [], int exitLen, int returnLe
 *
 *     Function Information
 *
-*     Name of Function:
+*     Name of Function: find
 *
-*     Programmer's Name:
+*     Programmer's Name: Atif Niyaz, Canyu Yang, Ittichot Suwanmungkool
 *
-*     Function Return Type:
+*     Function Return Type: int
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1.
-*       2.
-*       3.
+*       1. int exiting []; // The array of exiting students
+*       2. int returning []; // The array of returning students
+*       3. int exitLen; // The length of exiting students
+*       4. int returnLen; // The length of returning students
+*       5. int values[]; // The array of students that were found
 *
-*     Function Description:
+*     Function Description: Finds students and puts them into the values[]
 *
 ***************************************************************************/
 
 int find(int exiting [], int returning [], int exitLen, int returnLen, int values [])
 {
 
-  int i;
-  int j;
-  int cnt = 0;
+  int i; // For-loop iterator
+  int j; // For-loop iterator
+  int cnt = 0; // Count of values not found
   
   for(i = 0; i < exitLen; i++)
   {
@@ -204,18 +233,17 @@ int find(int exiting [], int returning [], int exitLen, int returnLen, int value
 *
 *     Function Information
 *
-*     Name of Function:
+*     Name of Function: printList
 *
-*     Programmer's Name:
+*     Programmer's Name: Atif Niyaz, Canyu Yang, Ittichot Suwanmungkool
 *
-*     Function Return Type:
+*     Function Return Type: void
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1.
-*       2.
-*       3.
+*       1. int array[]; // The array of data
+*       2. int len; // The length of the array
 *
-*     Function Description:
+*     Function Description: Prints the list of elements in an array
 *
 ***************************************************************************/
 
@@ -234,18 +262,17 @@ void printList(int array [], int len)
 *
 *     Function Information
 *
-*     Name of Function:
+*     Name of Function: insertionSort
 *
-*     Programmer's Name:
+*     Programmer's Name: Atif Niyaz, Canyu Yang, Ittichot Suwanmungkool
 *
-*     Function Return Type:
+*     Function Return Type: void
 *
 *     Parameters (list data type, name, and comment one per line):
-*       1.
-*       2.
-*       3.
+*       1. int array []; // The array to sort
+*       2. int len; // The length of said array
 *
-*     Function Description:
+*     Function Description: Use insertion sort to sort the array
 *
 ***************************************************************************/
 
