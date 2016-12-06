@@ -161,7 +161,7 @@ void checkAttendance(int exiting [], int returning [], int exitLen, int returnLe
   {
     if(countExit != 0)
     {
-      printf("\nStudents returning but not exiting:");
+      printf("\nStudents exiting but not returning:");
       printList(valuesExit, countExit);
       printf("\n\n");
     }
@@ -173,7 +173,7 @@ void checkAttendance(int exiting [], int returning [], int exitLen, int returnLe
 	printf("\n");
       }
 
-      printf("Students exiting but not returning:");
+      printf("Students returning but not exiting:");
       printList(valuesReturn, countReturn);
       printf("\n\n");
     }
