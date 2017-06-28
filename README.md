@@ -1,4 +1,4 @@
-# 2016-cs159
+# 2016-CS159
 A compilation of CS 159 Homework and Labs from Fall 2016
 
 ## Old Compiled Final Exams
