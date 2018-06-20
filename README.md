@@ -1,6 +1,7 @@
 # CS 159: Programming Applications for Engineers
 
-A compilation of CS 159 Homework and Labs from Fall 2016
+A compilation of CS 159 Homework and Labs from Fall 2016.
+
 Professor: William Crum https://web.ics.purdue.edu/~wcrum/
 
 ## Old Compiled Final Exams
